@@ -5,40 +5,41 @@ namespace ConsoleApp1
     class Weapon
     {
         private string _model;
-        private int _ammo;
+        private float _weight;
 
         public string Model
         {
             get { return _model; }
             set { _model = value; }
         }
-        public int Ammo
-        {
-            get { return _ammo; }
-            set { _ammo = value; }
-        }
-
-        public void weapon()
-        {
-            Console.WriteLine("Модель:" + Model);
-            Console.WriteLine("Боезопас:" + Ammo);
-
-        }
-    }
-
-    class Rifle : Weapon
-    {
-        private float _weight;
         public float Weight
         {
             get { return _weight; }
             set { _weight = value; }
         }
 
+
+        public void weapon()
+        {
+            Console.WriteLine("Модель:" + Model);
+            Console.WriteLine("Вес:" + Weight + "кг");
+        }
+    }
+
+    class Rifle : Weapon
+    {
+        private int _ammo;
+
+        public int Ammo
+        {
+            get { return _ammo; }
+            set { _ammo = value; }
+        }
+
         public void rifle()
         {
             weapon();
-            Console.WriteLine("Вес:" + Weight);
+            Console.WriteLine("Боезопас:" + Ammo);
         }
     }
 
@@ -55,7 +56,7 @@ namespace ConsoleApp1
         {
             
             rifle();
-            Console.WriteLine("Дальность:" + Range);
+            Console.WriteLine("Дальность:" + Range + "км");
         }
     }
 
@@ -71,7 +72,7 @@ namespace ConsoleApp1
         public void knife()
         {
             weapon();
-            Console.WriteLine("Длина:" + Length);
+            Console.WriteLine("Длина:" + Length + "м");
         }
 
     }
@@ -80,13 +81,13 @@ namespace ConsoleApp1
     {
         public static void Main(string[] args)
         {
-            Weapon w = new Weapon { Model = "AWP" , Ammo = 7};
+            Weapon w = new Weapon { Model = "AWP" , Weight = 40.4f};
             w.weapon();
-            Rifle r = new Rifle { Model = "m4a4", Ammo = 30, Weight = 4.7f };
+            Rifle r = new Rifle { Model = "m4a4", Weight = 4.7f, Ammo = 30 };
             r.rifle();
-            Grenade g = new Grenade { Model = "Javelin", Ammo = 1, Weight = 100.32f, Range = 40.3f };
+            Grenade g = new Grenade { Model = "Javelin", Weight = 100.32f, Ammo = 1, Range = 40.3f };
             g.grenade();
-            Knife k = new Knife { Model = "Sablya", Ammo = 00, Length = 45.5f };
+            Knife k = new Knife { Model = "Sablya", Weight = 2.4f, Length = 45.5f };
             k.knife();
             Console.Read();
         }
